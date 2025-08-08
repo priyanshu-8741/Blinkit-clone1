@@ -275,6 +275,9 @@ if(otp!==user.forgot_password_otp){
 }
 // if otp is not expired
 //otp === user.forgot_password_otp
+user.forgot_password_otp="";
+user.forgot_password_expiry=""
+await user.save()
 
 return res.json({
   message:"verify  successfully",
@@ -383,4 +386,17 @@ return res.json({
     })
     
   }
+ }
+
+ export async function userdetails(req,res){
+const userid = req.userid 
+ const user = await usermodel.findById(userid).select("-password");
+ res.json({
+  message:"we get userdetails",
+  error:false,
+  data:user
+ })
+
+
+
  }

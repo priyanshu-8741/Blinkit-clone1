@@ -1,5 +1,5 @@
 import {Router} from "express"
-import { forgotpassword, logoutcontroller, refreshtoken, resetpassword, updateinfo, uploadavatar, verifyforgotpasswordotp } from "../controller/user.controller.js"
+import { forgotpassword, logoutcontroller, refreshtoken, resetpassword, updateinfo, uploadavatar, userdetails, verifyforgotpasswordotp } from "../controller/user.controller.js"
 import {verifyemailcontroller} from "../controller/user.controller.js"
 import {logincontroller} from '../controller/user.controller.js'
 import auth from "../middleware/auth.js"
@@ -17,4 +17,5 @@ userroute.put("/forgot-password",forgotpassword)
 userroute.put("/verify-forgot-password-otp",verifyforgotpasswordotp)
 userroute.put("/reset-password",resetpassword)
 userroute.post("/refresh_token",refreshtoken)
+userroute.get("/user-details",auth,userdetails)
 export default userroute
